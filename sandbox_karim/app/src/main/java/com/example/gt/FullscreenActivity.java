@@ -109,7 +109,8 @@ public class FullscreenActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
+    protected void onPostCreate(Bundle savedInstanceState)
+    {
         super.onPostCreate(savedInstanceState);
 
         // Trigger the initial hide() shortly after the activity has been
