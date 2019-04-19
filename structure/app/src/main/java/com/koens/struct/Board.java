@@ -3,7 +3,7 @@ package com.koens.struct;
 import com.koens.struct.entity.EntityManager;
 import com.koens.struct.entity.NonPlayableEntity;
 
-public class Board {
+public class Board {gsgsgssgsg
 
     private Tile[][] configuration;
     EntityManager entityList;
