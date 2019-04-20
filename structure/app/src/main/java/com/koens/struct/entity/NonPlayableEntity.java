@@ -1,21 +1,14 @@
 package com.koens.struct.entity;
 
 
+import com.koens.struct.Board;
 import com.koens.struct.Position;
 
-public class NonPlayableEntity extends Entity {
+public abstract class NonPlayableEntity extends Entity {
 
-    private Boolean pickedup = false;
-
-    public NonPlayableEntity(Position p) {
+    public NonPlayableEntity(Position p, Board b) {
         this.position = p;
+        this.board = b;
     }
 
-    public boolean isPickedUp() {
-        return pickedup;
-    }
-
-    public void setPickedup(Boolean v) {
-        this.pickedup = v;
-    }
 }

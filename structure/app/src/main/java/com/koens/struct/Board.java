@@ -1,7 +1,12 @@
 package com.koens.struct;
 
+import com.koens.struct.entity.Entity;
 import com.koens.struct.entity.EntityManager;
+import com.koens.struct.entity.NonMovingEntity;
+import com.koens.struct.entity.NonMovingEntityType;
 import com.koens.struct.entity.NonPlayableEntity;
+import com.koens.struct.entity.PushableEntity;
+import com.koens.struct.entity.PushableEntityType;
 
 public class Board {
 
@@ -16,27 +21,27 @@ public class Board {
 
         this.entityList = mn;
 
-        this.configuration = new Tile[n+2][m+2];
+        this.configuration = new Tile[n + 2][m + 2];
         initBoard();
     }
 
     //Some sort of parser?
 
-    public void setTile(Position pos, Tile t) {
-        this.configuration[pos.getX()][pos.getY()] = t;
-    }
-
     public boolean playerMovePossible(Direction dir) {
         Position hypotheticalPosition = entityList.getPlayerPosition(true);
-        hypotheticalPosition.moveInDirection(dir);
-        if (hypotheticalPosition.getX() <= 0 || hypotheticalPosition.getX() >= n+2) {
+        return movePossible(dir, hypotheticalPosition);
+    }
+
+    public boolean movePossible(Direction dir, Position p) {
+        p.moveInDirection(dir);
+        if (p.getX() <= 0 || p.getX() >= n + 2) {
             return false;
         }
-        if (hypotheticalPosition.getY() <= 0 || hypotheticalPosition.getY() >= m+2) {
+        if (p.getY() <= 0 || p.getY() >= m + 2) {
             return false;
         }
 
-        Tile tileAtPosition = getTileAtPosition(hypotheticalPosition);
+        Tile tileAtPosition = getTileAtPosition(p);
         if (!tileAtPosition.canBeMovedInto()) {
             return false;
         }
@@ -44,20 +49,19 @@ public class Board {
         return true;
     }
 
-    public boolean slotAtPosition(Position position) {
-        Tile t = getTileAtPosition(position);
-        return t instanceof Slot;
-    }
-
     public Tile getTileAtPosition(Position position) {
         return this.configuration[position.getX()][position.getY()];
+    }
+
+    public Entity entityAt(Position p) {
+        return entityList.getPickUpAtPosition(p);
     }
 
     public Boolean checkVictory() {
         for (Tile[] t : configuration) {
             for (Tile t1 : t) {
-                if (t1 instanceof Slot) {
-                    if (!((Slot) t1).getOccupied()) {
+                if (t1 instanceof Slot || t1 instanceof FlagTile) {
+                    if (!t1.getOccupied()) {
                         return false;
                     }
                 }
@@ -68,13 +72,13 @@ public class Board {
 
     private void initBoard() {
         int i;
-        for (i = 0; i <= n+1; i++) {
+        for (i = 0; i <= n + 1; i++) {
             configuration[i][0] = new Tile(false, new Position(i, 0));
-            configuration[i][m+1] = new Tile(false, new Position(i, m+1));
+            configuration[i][m + 1] = new Tile(false, new Position(i, m + 1));
         }
-        for (i = 0; i <= m+1; i++) {
+        for (i = 0; i <= m + 1; i++) {
             configuration[0][i] = new Tile(false, new Position(0, i));
-            configuration[n+1][i] = new Tile(false, new Position(n+1, i));
+            configuration[n + 1][i] = new Tile(false, new Position(n + 1, i));
         }
 
         for (i = 1; i <= n; i++) {
@@ -84,6 +88,7 @@ public class Board {
         }
 
         configuration[3][4] = new Slot(new Position(3, 4));
+        configuration[6][7] = new FlagTile(new Position(6, 7));
     }
 
     @Override
@@ -96,21 +101,37 @@ public class Board {
                     sb.append("x");
                     continue;
                 } else if (e != null) {
-                    if (!e.isPickedUp()) {
-                        sb.append("B");
+                    if (e instanceof NonMovingEntity) {
+                        NonMovingEntity n = (NonMovingEntity) e;
+                        if (n.type == NonMovingEntityType.DOOR) {
+                            sb.append("D");
+                        } else {
+                            sb.append("W");
+                        }
                     } else {
-                        sb.append("0");
+                        PushableEntity p = (PushableEntity)e;
+                        if (p.type == PushableEntityType.BOULDER) {
+                            sb.append("B");
+                        } else {
+                            sb.append("K");
+                        }
                     }
                     continue;
                 }
                 if (!t1.canBeMovedInto()) {
                     sb.append("| ");
                 } else {
-                    if (t1 instanceof  Slot) {
-                        if (((Slot) t1).getOccupied()) {
-                            sb.append("D");
+                    if (t1 instanceof Slot) {
+                        if (t1.getOccupied()) {
+                            sb.append("I");
                         } else {
                             sb.append("S");
+                        }
+                    } else if (t1 instanceof FlagTile) {
+                        if (t1.getOccupied()) {
+                            sb.append("P");
+                        } else {
+                            sb.append("F");
                         }
                     } else {
                         sb.append("0");
@@ -122,4 +143,8 @@ public class Board {
         return sb.toString();
     }
 
+    public void removeEnititiesAfterCollision(NonMovingEntity e, PushableEntity pushableEntity) {
+        entityList.remove(e);
+        entityList.remove(pushableEntity);
+    }
 }

@@ -1,5 +1,6 @@
 package com.koens.struct.entity;
 
+import com.koens.struct.Board;
 import com.koens.struct.Direction;
 import com.koens.struct.Position;
 
@@ -10,17 +11,24 @@ public class EntityManager {
 
     List<NonPlayableEntity> pickups;
 
+    Board board;
+
     Player p;
 
-    public EntityManager(Position playerPosition) {
-        this.p = new Player(playerPosition);
+    public EntityManager(Position playerPosition, Board b) {
+        this.board = b;
+        this.p = new Player(playerPosition, b);
         this.pickups = new ArrayList<>();
-        pickups.add(new Boulder(new Position(2, 2)));
+        pickups.add(new PushableEntity(new Position(2, 2), b, PushableEntityType.BOULDER));
+        pickups.add(new PushableEntity(new Position(4, 5), b, PushableEntityType.BOULDER));
+        pickups.add(new PushableEntity(new Position(7, 2), b, PushableEntityType.KEY));
+        pickups.add(new NonMovingEntity(new Position(4, 4), b, NonMovingEntityType.WATER));
+        pickups.add(new NonMovingEntity(new Position(5, 6), b, NonMovingEntityType.DOOR));
     }
 
     public Position getPlayerPosition(Boolean copy) {
         if (copy) {
-            return new Position(p.getPosition().getX(), p.getPosition().getY());
+            return p.getPosition().copy();
         } else {
             return p.getPosition();
         }
@@ -43,18 +51,9 @@ public class EntityManager {
         return null;
     }
 
-    public void pickUp(NonPlayableEntity pickedup) {
-        p.pickUp(pickedup);
-        pickedup.setPickedup(true);
-    }
-
-    public void dropPickup(Position dropPosition) {
-        p.carry.setPickedup(false);
-        p.carry.setPosition(dropPosition);
-        p.drop();
-    }
-
-    public Boolean isPlayerCarrying() {
-        return p.carrying;
+    public void remove(Entity e) {
+        if (e instanceof NonPlayableEntity) {
+            pickups.remove(e);
+        }
     }
 }

@@ -41,7 +41,7 @@
             android:layout_height="533dp"
             android:text="HALLO"
             android:textAlignment="center"
-            android:textSize="36sp" />
+            android:textSize="34sp" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

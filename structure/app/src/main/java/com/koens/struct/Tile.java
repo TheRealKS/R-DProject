@@ -1,10 +1,14 @@
 package com.koens.struct;
 
+import com.koens.struct.entity.Entity;
+
 public class Tile {
 
     private Position position;
 
     private boolean canBeMovedInto;
+
+    protected boolean occupied;
 
     public Tile(Boolean moveinto, Position position) {
         this.position = position;
@@ -19,7 +23,11 @@ public class Tile {
         return this.canBeMovedInto;
     }
 
-    public void setCanBeMovedInto(Boolean v) {
-        this.canBeMovedInto = v;
+    public Boolean getOccupied(){
+        return this.occupied;
+    }
+
+    public void setOccupied(Boolean v, Entity Occupier) {
+        this.occupied = v;
     }
 }

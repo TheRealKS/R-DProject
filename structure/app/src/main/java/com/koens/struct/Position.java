@@ -34,21 +34,9 @@ public class Position {
         }
     }
 
-    public void moveNorth() {
-        this.y++;
-    }
-
-    public void moveSouth() {
-        this.y--;
-    }
-
-    public void moveEast() {
-        this.x++;
-    }
-
-    public void moveWest() {
-        this.x--;
-    }
+   public Position copy() {
+        return new Position(x, y);
+   }
 
     @Override
     public boolean equals(Object o) {
