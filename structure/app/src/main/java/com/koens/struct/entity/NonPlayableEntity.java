@@ -4,7 +4,7 @@ package com.koens.struct.entity;
 import com.koens.struct.Board;
 import com.koens.struct.Position;
 
-public class NonPlayableEntity extends Entity {
+public abstract class NonPlayableEntity extends Entity {
 
     public NonPlayableEntity(Position p, Board b) {
         this.position = p;
