@@ -17,7 +17,7 @@ import java.util.NoSuchElementException;
 
 
 /**
- * Type casting {@see MainActivity::tv} and {@see MainActivity::bttn}
+ * Type casting {@link MainActivity#tv} (and also for Button)
  * is required with API<26. We are working with Android 7.0 API 24.
  */
 public class MainActivity extends AppCompatActivity {
@@ -33,11 +33,11 @@ public class MainActivity extends AppCompatActivity {
         g = new Game(getBaseContext());
 
         tv = (TextView) findViewById(R.id.textView);
+
         setupButtons();
 
         redraw();
     }
-
 
     /**
      * E_BUTTON (Enumeration of buttons) contains the
@@ -89,45 +89,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /*
-    private void setupButtons() {
-        Button bttn;
-        bttn = (Button) findViewById(R.id.button5);
-        bttn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                g.movePlayer(Direction.NORTH);
-                redraw();
-            }
-        });
-        bttn = (Button) findViewById(R.id.button6);
-        bttn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                g.movePlayer(Direction.SOUTH);
-                redraw();
-            }
-        });
-        bttn = (Button) findViewById(R.id.button7);
-        bttn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                g.movePlayer(Direction.EAST);
-                redraw();
-            }
-        });
-        bttn = (Button) findViewById(R.id.button8);
-        bttn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                g.movePlayer(Direction.WEST);
-                redraw();
-            }
-        });
-    }
-    */
-
-    private void redraw() {
+    /**
+     * Pass current game state to graphicsHandler,
+     * get visual representation and update view.
+     */
+    private void redraw()
+    {
         tv.setText(g.getRepresentation());
     }
 }

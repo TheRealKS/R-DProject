@@ -147,4 +147,8 @@ public class Board {
         entityList.remove(e);
         entityList.remove(pushableEntity);
     }
+
+    public int getN() {return this.n; }
+    public int getM() {return this.m; }
+    public Tile[][] getConfiguration() {return this.configuration; }
 }

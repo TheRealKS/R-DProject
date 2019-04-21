@@ -535,6 +535,10 @@ drawable abc_textfield_search_material
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable notification_template_icon_bg
+id BTN_EAST
+id BTN_NORTH
+id BTN_SOUTH
+id BTN_WEST
 id action0
 id action_bar
 id action_bar_activity_content
@@ -557,10 +561,6 @@ id always
 id barrier
 id beginning
 id bottom
-id button5
-id button6
-id button7
-id button8
 id buttonPanel
 id cancel_action
 id chains

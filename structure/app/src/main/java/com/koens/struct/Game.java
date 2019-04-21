@@ -38,6 +38,8 @@ public class Game {
         }
     }
 
+    public Board getBoard() { return this.board; }
+
     public String getRepresentation() {
         return board.toString();
     }
