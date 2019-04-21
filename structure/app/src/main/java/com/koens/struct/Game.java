@@ -3,44 +3,38 @@ package com.koens.struct;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.koens.struct.entity.Boulder;
 import com.koens.struct.entity.EntityManager;
-import com.koens.struct.entity.NonPlayableEntity;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class Game {
 
     private EntityManager entityManager;
     private Board board;
     private Context ctx;
+    private long startTime;
 
     public Game(Context c) {
-        this.entityManager = new EntityManager(new Position(1, 1));
-        this.board = new Board(4, 4, entityManager);
+        this.board = new Board(8, 8, null);
+        this.entityManager = new EntityManager(new Position(1, 1), this.board);
+        this.board.entityList = entityManager;
         this.ctx = c;
+        this.startTime = Calendar.getInstance().getTimeInMillis();
     }
 
     public void movePlayer(Direction dir) {
-        if (board.playerMovePossible(dir)) {
-            //Move the player
-            entityManager.movePlayer(dir);
-
-            if (board.slotAtPosition(entityManager.getPlayerPosition(false))) {
-                Slot s = (Slot)board.getTileAtPosition(entityManager.getPlayerPosition(false));
-                if (entityManager.isPlayerCarrying() && !s.getOccupied()) {
-                    s.setOccupied(true);
-                    entityManager.dropPickup(entityManager.getPlayerPosition(false));
-                    if (board.checkVictory()) {
-                        Toast.makeText(ctx, "You win!", Toast.LENGTH_LONG).show();
-                    }
-                }
-            }
-
-            NonPlayableEntity pickup = entityManager.getPickUpAtPlayerPosition();
-            if (pickup != null) {
-                if (pickup instanceof Boulder && !pickup.isPickedUp()) {
-                    entityManager.pickUp(pickup);
-                }
-            }
+        entityManager.movePlayer(dir);
+        if (board.checkVictory()) {
+            long endTime = Calendar.getInstance().getTimeInMillis();
+            long difference = endTime - startTime;
+            Date d = new Date(difference);
+            DateFormat formatter = new SimpleDateFormat("HH:mm:ss.SSS");
+            formatter.setTimeZone(TimeZone.getDefault());
+            Toast.makeText(ctx, "You win! It took you: " + formatter.format(d), Toast.LENGTH_LONG).show();
         }
     }
 

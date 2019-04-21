@@ -1,85 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
     abi="x86"
-    api-level="28"
-    build-mode="COLD"
-    density="560dpi"
+    api-level="25"
+    build-mode="HOT_WARM"
+    density="420dpi"
     format="10"
-    ir-eligibility="FIELD_REMOVED"
-    plugin-version="3.3.2"
-    timestamp="1555502200419"
-    token="6086877848531474830"
-    verifier="COLD_SWAP_REQUESTED" >
+    plugin-version="3.4.0"
+    timestamp="1555758856784"
+    token="-8004307264357067615"
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="212" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="9" />
+        duration="0" />
     <task
         name="verifier"
-        duration="3" />
+        duration="0" />
 
     <artifact
-        location="C:\Users\Ji\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
-        type="SPLIT" />
+        location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+        type="RESOURCES" />
 
     <build
         build-mode="FULL"
-        timestamp="1555501909659"
+        timestamp="1555756047306"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="C:\Users\Ji\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Ji\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Ji\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Ji\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
+            location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Ji\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Ji\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Ji\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Ji\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\resources\instant-run\debug\resources-debug.apk"
+            location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Ji\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
+            location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Ji\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Ji\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
         <artifact
-            location="C:\Users\Ji\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Ji\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
+            location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
             type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="FIELD_REMOVED"
-        timestamp="1555502200419"
+        timestamp="1555756913378"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\Users\Ji\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1555757321287"
+        verifier="FIELD_REMOVED" >
+        <artifact
+            location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
             type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1555758610732"
+        verifier="CLASS_ADDED" >
+        <artifact
+            location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1555758677784"
+        verifier="METHOD_DELETED" >
+        <artifact
+            location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="HOT_WARM"
+        timestamp="1555758753974"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\builds\debug\1555758753974\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        build-mode="HOT_WARM"
+        timestamp="1555758844264"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\builds\debug\1555758844264\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        build-mode="HOT_WARM"
+        timestamp="1555758856784"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\koens\Documents\Courses\IPC030 (R&amp;D Project)\structure\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+            type="RESOURCES" />
     </build>
 
 </instant-run>

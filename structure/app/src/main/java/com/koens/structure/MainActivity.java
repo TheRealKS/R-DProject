@@ -66,8 +66,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @SuppressLint("SetTextI18n")
     private void redraw() {
-        tv.setText("\n" + g.getRepresentation());
+        tv.setText(g.getRepresentation());
     }
 }
