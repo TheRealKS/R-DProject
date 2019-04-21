@@ -17,7 +17,7 @@ import java.util.NoSuchElementException;
 
 
 /**
- * Type casting {@link MainActivity#tv} (and also for Button)
+ * Type casting {@link #tv} (and also for Button)
  * is required with API<26. We are working with Android 7.0 API 24.
  */
 public class MainActivity extends AppCompatActivity {
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
      * will call {@link Game#movePlayer(Direction)} with
      * Direction := {@link E_BUTTON#value}.
      *
-     * @throws InvalidParameterException when button not found in view.
+     * @throws InvalidParameterException when button not found in view. @todo replace with FinishAndExit (something like that)
      */
     private void setupButtons() throws NoSuchElementException
     {

@@ -6,8 +6,11 @@ import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.widget.GridView;
+import android.content.Context;
+
 /**
- *
+ * @author Karim Abdulahi
  */
 public class GraphicsHandler
 {
@@ -15,21 +18,39 @@ public class GraphicsHandler
     private int n, m;  // Dimension of game
 
     /**
-     * used in {@link GraphicsHandler#spriteExists}, such that it need not assert
+     * holds latest map from {@link #readGameMatrix()}
+     */
+    private Map<Position, Sprite> lastMap;
+
+    /**
+     * used in {@link #spriteExists}, such that it need not assert
      * things every time.
      */
     private LinkedList<String> spriteExistsHistory = new LinkedList<String>();
 
+    /**
+     * The GridView this class operates on
+     */
+    private GridView gridView;
+
+    private Context context;
+
 
     /**
      * Simple constructor.
+     * @param context Context
      * @param g game
+     * @param gridView view that class operates on
      */
-    public GraphicsHandler(Game g)
+    public GraphicsHandler(Context context, Game g, GridView gridView)
     {
         this.game = g;
         this.n = g.getBoard().getN();
         this.m = g.getBoard().getM();
+        this.gridView = gridView;
+        this.context = context;
+
+        this.readGameMatrix();
     }
 
 
@@ -40,7 +61,10 @@ public class GraphicsHandler
      */
     enum Sprite {
         UNKNOWN("PLACEHOLDER"),
-        PLAYER("Test");
+        WALL("wall_000"),
+        PLAYER("arrow"),
+        BOULDER("ball"),
+        KEY("key");
 
         private String spriteId;
 
@@ -62,7 +86,8 @@ public class GraphicsHandler
      */
     private boolean spriteExists(String name)
     {
-        if( spriteExistsHistory.contains(name) ) return true;
+        if( spriteExistsHistory.contains(name) )
+            return true; // been asserted in past
 
         for(Sprite s : Sprite.values())
         {
@@ -93,7 +118,7 @@ public class GraphicsHandler
                 map.put(p, s);
             }
         }
-        return map;
+        return (this.lastMap = map);
     }
 
     /**
@@ -110,13 +135,32 @@ public class GraphicsHandler
         if(t.getClass().getSimpleName().equals("Tile")) // @todo test behavior
             return Sprite.valueOf("UNKNOWN");
 
-        String className = t.getClass().getSimpleName(); // Classname of current child of Tile
-        String EnumName = className.toUpperCase(); // The value that should be in enum Sprite
+        String className    = t.getClass().getSimpleName(); // Classname of current child of Tile
+        String EnumName     = className.toUpperCase(); // The value that should be in enum Sprite
 
         if(spriteExists(EnumName))
             return Sprite.valueOf(EnumName);
-        else
-            return Sprite.valueOf("UNKNOWN");
+
+        return Sprite.valueOf("UNKNOWN");
+    }
+
+    /**
+     * Will update the grid according to current state of game.
+     *
+     * @return True on success, false in all other cases.
+     */
+    public boolean updateGridView()
+    {
+        if(this.gridView == null)
+            return false;
+
+        this.readGameMatrix(); // fetch newest state of game into ::game;
+
+        MatrixAdapter MA = new MatrixAdapter(this.context, this.lastMap, this.n, this.m);
+        this.gridView.setAdapter(MA);
+
+
+        return true;
     }
 
 

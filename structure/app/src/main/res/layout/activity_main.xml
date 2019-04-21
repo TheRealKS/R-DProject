@@ -38,10 +38,16 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="533dp"
+            android:layout_height="wrap_content"
             android:text="HALLO"
             android:textAlignment="center"
             android:textSize="34sp" />
+
+        <GridView
+            android:id="@+id/matrix"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
