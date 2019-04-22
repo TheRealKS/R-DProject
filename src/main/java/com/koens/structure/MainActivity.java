@@ -24,7 +24,7 @@ import org.w3c.dom.Text;
 
 import java.lang.reflect.Field;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
 
     TextView tileLayer;
     TextView gameLayer;
@@ -39,45 +39,33 @@ public class MainActivity extends AppCompatActivity {
 
         tileLayer = findViewById(R.id.tileLayer);
         gameLayer = findViewById(R.id.gameLayer);
-        setupButtons();
+        gameLayer.setOnTouchListener(this);
 
         redraw();
     }
+    
+    @Override
+    public boolean onTouch (View v, MotionEvent event) {
+        int width = v.getWidth();
+        int height = v.getHeight();
+        float x = event.getX();
+        float y = event.getY();
+        float dxdy = (float) height / width;
 
-    private void setupButtons() {
-        Button bttn;
-        bttn = findViewById(R.id.button5);
-        bttn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            if(y <= x * dxdy && y <= height - x * dxdy) {
                 g.movePlayer(Direction.NORTH);
-                redraw();
-            }
-        });
-        bttn = findViewById(R.id.button6);
-        bttn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                g.movePlayer(Direction.SOUTH);
-                redraw();
-            }
-        });
-        bttn = findViewById(R.id.button7);
-        bttn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                g.movePlayer(Direction.EAST);
-                redraw();
-            }
-        });
-        bttn = findViewById(R.id.button8);
-        bttn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            } else if(y > x*dxdy && y <= height - x*dxdy) {
                 g.movePlayer(Direction.WEST);
-                redraw();
+            } else if(y <= x*dxdy && y > height - x*dxdy) {
+                g.movePlayer(Direction.EAST);
+            } else if (y > x*dxdy && y > height - x*dxdy) {
+                g.movePlayer(Direction.SOUTH);
             }
-        });
+        }
+
+        redraw();
+        return true;
     }
 
     @SuppressLint("SetTextI18n")
