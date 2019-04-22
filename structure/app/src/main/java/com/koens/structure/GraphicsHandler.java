@@ -22,7 +22,7 @@ public class GraphicsHandler
     /**
      * holds latest map from {@link #readGameMatrix()}
      */
-    private Map<Position, Sprite> lastMap;
+    private Map<Position, Tuple<Sprite, String>> lastMap;
 
     /**
      * used in {@link #spriteExists}, such that it need not assert
@@ -52,6 +52,7 @@ public class GraphicsHandler
         this.gridView = gridView;
         this.context = context;
 
+        this.lastMap = new HashMap<>();
         this.readGameMatrix();
     }
 
@@ -74,9 +75,11 @@ public class GraphicsHandler
             this.spriteId = spriteId;
         }
 
-        public String getSpriteId() {
+        public String getSpriteId(){
             return spriteId;
         }
+
+
     }
 
 
@@ -105,22 +108,25 @@ public class GraphicsHandler
     /**
      * Read gameMatrix, for each {@link Tile} decide
      * what sprite must be used at that position
-     * @return HashMap (Position, Sprite)
+     * @return HashMap (Position, Tuple(Sprite, String))
      */
-    private Map<Position, Sprite> readGameMatrix()
+    private Map<Position, Tuple<Sprite, String>> readGameMatrix()
     {
         Tile[][] currentMatrix = this.game.getBoard().getConfiguration();
 
-        Map<Position, Sprite> map = new HashMap<Position, Sprite>();
+        Map<Position, Tuple<Sprite, String>> map = new HashMap<>();
 
         for(int p = 0; p < this.n + 2; p++) {
             for (int q = 0; q < this.m + 2; q++)
             {
                 Position pos    = new Position(p, q);
                 Sprite s        = findSprite(currentMatrix[p][q]);
-                map.put(pos, s);
+                System.out.println(s.getSpriteId());
+                map.put(pos, new Tuple<Sprite, String>(s, this.getSuffix(pos, currentMatrix)));
             }
         }
+
+        map.put(null, new Tuple<Sprite, String>(Sprite.UNKNOWN, null)); // if null, than unknown
         this.lastMap = map;
 
         return map;
@@ -129,52 +135,64 @@ public class GraphicsHandler
 
     /**
      * Determine suffix for SpriteSet.
-     * @param pos
-     * @return
+     * @param pos suffix for tile at position
+     * @param matrix current game configuration
+     * @return suffix
      */
-    private String getSuffix(Position pos)
+    public String getSuffix(Position pos, Tile[][] matrix)
     {
         StringBuilder suffix = new StringBuilder();
 
-        Sprite N = this.lastMap.get(pos.getPosAfterMove(Direction.NORTH));
-        Sprite E = this.lastMap.get(pos.getPosAfterMove(Direction.EAST ));
-        Sprite S = this.lastMap.get(pos.getPosAfterMove(Direction.SOUTH));
-        Sprite W = this.lastMap.get(pos.getPosAfterMove(Direction.WEST ));
+        Position N = pos.getPosAfterMove(Direction.NORTH, this.m, this.n);
+        Position E = pos.getPosAfterMove(Direction.EAST , this.m, this.n);
+        Position S = pos.getPosAfterMove(Direction.SOUTH, this.m, this.n);
+        Position W = pos.getPosAfterMove(Direction.WEST , this.m, this.n);
 
-        boolean n,e,s,w,h,v; // north east south west horizontal vertical
-        n = (N == Sprite.TILE);
-        e = (E == Sprite.TILE);
-        s = (S == Sprite.TILE);
-        w = (W == Sprite.TILE);
+        boolean wallN, wallE, wallS, wallW, h, v; // north east south west horizontal vertical
 
-        if(!n && !e && !s && !w) // no surrounding walls, just tile then
+        if(N != null) { wallN = !(matrix[N.getX()][N.getY()].canBeMovedInto()); }
+        else { wallN = true; }
+
+        if(E != null) { wallE = !(matrix[E.getX()][E.getY()].canBeMovedInto()); }
+        else { wallE = true; }
+
+        if(S != null) { wallS = !(matrix[S.getX()][S.getY()].canBeMovedInto()); }
+        else { wallS = true; }
+
+        if(W != null) { wallW = !(matrix[W.getX()][W.getY()].canBeMovedInto()); }
+        else { wallW = true; }
+
+        if( !wallN && !wallE && !wallS && !wallW ) // no surrounding walls, just tile then
             return "000";
 
-        h = (e && w);
-        v = (s && n);
+        h = wallE && wallW;
+        v = wallN && wallS;
 
         if(h) { suffix.append('h'); }
-        if(!h && (e || w)) // not horizontal but e xor w, then
-        {
-            if(e)
-                suffix.append('e');
-            else
-                suffix.append('w');
-        }
-
         if(v) { suffix.append('v'); }
-        if(!v && (s || n))
+
+        if(!v && (wallS || wallN))
         {
-            if(s)
+            if(wallS)
                 suffix.append('s');
             else
                 suffix.append('n');
         }
 
+        if(!h && (wallE || wallW)) // not horizontal but e xor w, then
+        {
+            if(wallE)
+                suffix.append('e');
+            else
+                suffix.append('w');
+        }
+
+
         if(suffix.length() == 1) // then only one tile found, so add itself to comply with filenames
             suffix.append(suffix.charAt(0));
 
-
+        suffix.append('1');
+        System.out.println("wall_"+suffix.toString());
         return suffix.toString();
     }
 
@@ -189,9 +207,6 @@ public class GraphicsHandler
      */
     private Sprite findSprite(Tile t)
     {
-        if(t.getClass().getSimpleName().equals("Tile")) // @todo test behavior
-            return Sprite.UNKNOWN;
-
         String className    = t.getClass().getSimpleName(); // Classname of current child of Tile
         String EnumName     = className.toUpperCase(); // The value that should be in enum Sprite
 
@@ -220,7 +235,7 @@ public class GraphicsHandler
 
         // dynamic height of gridView
         ViewGroup.LayoutParams params = this.gridView.getLayoutParams();
-        params.height = this.m * this.gridView.getColumnWidth(); //@todo check if not n.
+        params.height = (this.m + 2) * this.gridView.getColumnWidth(); //@todo check if not n.
         this.gridView.setLayoutParams(params);
 
 

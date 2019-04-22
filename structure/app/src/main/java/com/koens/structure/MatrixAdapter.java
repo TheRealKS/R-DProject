@@ -21,10 +21,11 @@ import java.lang.Math;
 public class MatrixAdapter extends BaseAdapter
 {
     private Context context;
-    private Map<Position, GraphicsHandler.Sprite> data;
+    private Map<Position, Tuple<GraphicsHandler.Sprite, String>> data;
     private int n, m;
 
-    public MatrixAdapter(Context context, Map<Position, GraphicsHandler.Sprite> data, int n, int m)
+    public MatrixAdapter(Context context, Map<Position, Tuple<GraphicsHandler.Sprite, String>> data,
+                         int n, int m)
     {
         this.context = context;
         this.data = data;
@@ -68,17 +69,19 @@ public class MatrixAdapter extends BaseAdapter
             imageView = new ImageView(this.context);
             imageView.setPadding(0,0,0,0);
         }
-        else // reuse convertView
+        else
         {
             imageView = (ImageView) convertView; // @todo check if right type
         }
 
-        Position pos                    = int2pos(position);
-        GraphicsHandler.Sprite sprite   = this.data.get(pos);
-
+        Position pos = int2pos(position);
+        Tuple<GraphicsHandler.Sprite, String> tuple   = this.data.get(pos);
         int id = 0;
-        if(sprite != null)
-            id = this.context.getResources().getIdentifier(sprite.getSpriteId(), "drawable", this.context.getPackageName());
+
+        if(tuple != null) {
+            String sprite = tuple.x.getSpriteId() + tuple.y;
+            id = this.context.getResources().getIdentifier(sprite, "drawable", this.context.getPackageName());
+        }
 
         if(id != 0)// only if res exists, setImage...
             imageView.setImageResource(id);

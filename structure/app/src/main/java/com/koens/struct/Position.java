@@ -38,14 +38,20 @@ public class Position {
     /**
      * Applies direction, but does not alter current state.
      * It rather returns a new instance of {@link Position}.
+     * If out of bound, no change made.
      *
      * @param dir Direction NORTH, SOUTH, EAST, WEST
+     * @param x bound
+     * @param y bound
      * @return Position
      */
-    public Position getPosAfterMove(Direction dir)
+    public Position getPosAfterMove(Direction dir, int x, int y)
     {
         Position H = this.copy();
         H.moveInDirection(dir);
+        if(H.getX() > x || H.getX() < 0 || H.getY() > y || H.getY() < 0)
+            return null;
+
         return H;
     }
 

@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Apr 22 08:43:02 CEST 2019
+#Mon Apr 22 11:42:10 CEST 2019
 1.base=/Users/karim/Documents/GitHub/R-DProject/structure/app/build/intermediates/transforms/dexMerger/debug/0
 0.baseType=DIRECTORY
 1.baseType=DIRECTORY

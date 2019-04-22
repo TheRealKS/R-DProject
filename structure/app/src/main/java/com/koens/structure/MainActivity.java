@@ -3,6 +3,7 @@ package com.koens.structure;
 import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
@@ -98,6 +99,14 @@ public class MainActivity extends AppCompatActivity {
     {
         tv.setText(null);
         GridView matrix = (GridView) findViewById(R.id.matrix);
+        matrix.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return event.getAction() == MotionEvent.ACTION_MOVE;
+            }
+
+        });
         GraphicsHandler GH = new GraphicsHandler(this, this.g, matrix);
         GH.updateGridView();
     }
