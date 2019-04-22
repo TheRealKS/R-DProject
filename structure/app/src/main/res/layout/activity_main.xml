@@ -11,6 +11,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <GridView
+            android:id="@+id/matrix"
+            android:layout_width="match_parent"
+            android:layout_height="547dp" />
+
         <Button
             android:id="@+id/BTN_NORTH"
             android:layout_width="match_parent"
@@ -42,11 +47,6 @@
             android:text="HALLO"
             android:textAlignment="center"
             android:textSize="34sp" />
-
-        <GridView
-            android:id="@+id/matrix"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
     </LinearLayout>
 

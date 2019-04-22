@@ -31,7 +31,8 @@ public abstract class Entity {
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof Entity) {
+        if (o instanceof Entity)
+        {
             return ((Entity) o).getPosition().equals(this.position);
         }
         return false;

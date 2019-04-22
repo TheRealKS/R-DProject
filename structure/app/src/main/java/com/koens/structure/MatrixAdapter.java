@@ -16,6 +16,7 @@ import java.lang.Math;
  * This class is used by GridView::setAdapter();
  * https://developer.android.com/reference/android/widget/GridView#setAdapter(android.widget.ListAdapter)
  * it implements baseAdapter.
+ * @author Karim Abdulahi
  */
 public class MatrixAdapter extends BaseAdapter
 {
@@ -34,9 +35,9 @@ public class MatrixAdapter extends BaseAdapter
 
     private Position int2pos(int position)
     {
-        final double x = Math.floor(position / this.m);
-        final double y = position % this.n;
-        return new Position((int)x, (int)y);
+        final int h = position % (this.m+2);
+        final int v = (int) Math.floor(position / ((double) this.m + 2));
+        return new Position(v, h);
     }
 
     // Tell the GridView how many items it will get
@@ -61,12 +62,13 @@ public class MatrixAdapter extends BaseAdapter
     public View getView(int position, View convertView, ViewGroup parent)
     {
         ImageView imageView;
+
         if(convertView == null)
         {
             imageView = new ImageView(this.context);
             imageView.setPadding(0,0,0,0);
         }
-        else
+        else // reuse convertView
         {
             imageView = (ImageView) convertView; // @todo check if right type
         }
@@ -74,12 +76,14 @@ public class MatrixAdapter extends BaseAdapter
         Position pos                    = int2pos(position);
         GraphicsHandler.Sprite sprite   = this.data.get(pos);
 
-        int id = this.context.getResources().getIdentifier(sprite.getSpriteId(), "drawable", this.context.getPackageName());
+        int id = 0;
+        if(sprite != null)
+            id = this.context.getResources().getIdentifier(sprite.getSpriteId(), "drawable", this.context.getPackageName());
 
-        if(id == 0)
-            return null; //sprite not found
+        if(id != 0)// only if res exists, setImage...
+            imageView.setImageResource(id);
+        imageView.setAdjustViewBounds(true);
 
-        imageView.setImageResource(id);
         return imageView;
     }
 

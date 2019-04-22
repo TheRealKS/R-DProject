@@ -6,7 +6,7 @@ public class Tile {
 
     private Position position;
 
-    private boolean canBeMovedInto;
+    private boolean canBeMovedInto; /** what does this mean.. please add JavaDoc */
 
     protected boolean occupied;
 

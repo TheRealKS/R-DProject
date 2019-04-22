@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.widget.GridView;
+import android.view.ViewGroup;
+
 import android.content.Context;
 
 /**
@@ -59,12 +61,12 @@ public class GraphicsHandler
      * some child of {@link Tile}. With {@link Sprite#getSpriteId()}
      * the associated sprite can be found.
      */
-    enum Sprite {
-        UNKNOWN("PLACEHOLDER"),
-        WALL("wall_000"),
-        PLAYER("arrow"),
-        BOULDER("ball"),
-        KEY("key");
+    enum Sprite
+    {
+        UNKNOWN("placeholder"),
+        FLAGTILE("key"),
+        TILE("wall_"),
+        SLOT("arrow");
 
         private String spriteId;
 
@@ -91,7 +93,7 @@ public class GraphicsHandler
 
         for(Sprite s : Sprite.values())
         {
-            if (s.toString().equals(name))
+            if (s.name().equals(name))
             {
                 spriteExistsHistory.add(name);
                 return true;
@@ -107,18 +109,73 @@ public class GraphicsHandler
      */
     private Map<Position, Sprite> readGameMatrix()
     {
-        final Tile[][] currentMatrix = this.game.getBoard().getConfiguration();
+        Tile[][] currentMatrix = this.game.getBoard().getConfiguration();
+
         Map<Position, Sprite> map = new HashMap<Position, Sprite>();
 
-        for(int n = 0; n < this.n; n++) {
-            for (int m = 0; m < this.m; m++)
+        for(int p = 0; p < this.n + 2; p++) {
+            for (int q = 0; q < this.m + 2; q++)
             {
-                final Position p    = new Position(n, m);
-                final Sprite s      = findSprite(currentMatrix[n][m]);
-                map.put(p, s);
+                Position pos    = new Position(p, q);
+                Sprite s        = findSprite(currentMatrix[p][q]);
+                map.put(pos, s);
             }
         }
-        return (this.lastMap = map);
+        this.lastMap = map;
+
+        return map;
+    }
+
+
+    /**
+     * Determine suffix for SpriteSet.
+     * @param pos
+     * @return
+     */
+    private String getSuffix(Position pos)
+    {
+        StringBuilder suffix = new StringBuilder();
+
+        Sprite N = this.lastMap.get(pos.getPosAfterMove(Direction.NORTH));
+        Sprite E = this.lastMap.get(pos.getPosAfterMove(Direction.EAST ));
+        Sprite S = this.lastMap.get(pos.getPosAfterMove(Direction.SOUTH));
+        Sprite W = this.lastMap.get(pos.getPosAfterMove(Direction.WEST ));
+
+        boolean n,e,s,w,h,v; // north east south west horizontal vertical
+        n = (N == Sprite.TILE);
+        e = (E == Sprite.TILE);
+        s = (S == Sprite.TILE);
+        w = (W == Sprite.TILE);
+
+        if(!n && !e && !s && !w) // no surrounding walls, just tile then
+            return "000";
+
+        h = (e && w);
+        v = (s && n);
+
+        if(h) { suffix.append('h'); }
+        if(!h && (e || w)) // not horizontal but e xor w, then
+        {
+            if(e)
+                suffix.append('e');
+            else
+                suffix.append('w');
+        }
+
+        if(v) { suffix.append('v'); }
+        if(!v && (s || n))
+        {
+            if(s)
+                suffix.append('s');
+            else
+                suffix.append('n');
+        }
+
+        if(suffix.length() == 1) // then only one tile found, so add itself to comply with filenames
+            suffix.append(suffix.charAt(0));
+
+
+        return suffix.toString();
     }
 
     /**
@@ -133,7 +190,7 @@ public class GraphicsHandler
     private Sprite findSprite(Tile t)
     {
         if(t.getClass().getSimpleName().equals("Tile")) // @todo test behavior
-            return Sprite.valueOf("UNKNOWN");
+            return Sprite.UNKNOWN;
 
         String className    = t.getClass().getSimpleName(); // Classname of current child of Tile
         String EnumName     = className.toUpperCase(); // The value that should be in enum Sprite
@@ -141,7 +198,8 @@ public class GraphicsHandler
         if(spriteExists(EnumName))
             return Sprite.valueOf(EnumName);
 
-        return Sprite.valueOf("UNKNOWN");
+        System.out.println("Sprite for this enum not found: " + EnumName);
+        return Sprite.UNKNOWN;
     }
 
     /**
@@ -158,6 +216,12 @@ public class GraphicsHandler
 
         MatrixAdapter MA = new MatrixAdapter(this.context, this.lastMap, this.n, this.m);
         this.gridView.setAdapter(MA);
+        this.gridView.setNumColumns(m + 2); // m + 2 is width @todo check if Im right
+
+        // dynamic height of gridView
+        ViewGroup.LayoutParams params = this.gridView.getLayoutParams();
+        params.height = this.m * this.gridView.getColumnWidth(); //@todo check if not n.
+        this.gridView.setLayoutParams(params);
 
 
         return true;

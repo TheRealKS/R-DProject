@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import com.koens.struct.Direction;
@@ -95,6 +96,9 @@ public class MainActivity extends AppCompatActivity {
      */
     private void redraw()
     {
-        tv.setText(g.getRepresentation());
+        tv.setText(null);
+        GridView matrix = (GridView) findViewById(R.id.matrix);
+        GraphicsHandler GH = new GraphicsHandler(this, this.g, matrix);
+        GH.updateGridView();
     }
 }
