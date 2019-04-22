@@ -83,7 +83,10 @@ public class Board {
 
         for (i = 1; i <= n; i++) {
             for (int j = 1; j <= m; j++) {
-                configuration[i][j] = new Tile(true, new Position(i, j));
+                if(j == 5)
+                    configuration[i][j] = new Tile(false, new Position(i, j));
+                else
+                    configuration[i][j] = new Tile(true, new Position(i, j));
             }
         }
 

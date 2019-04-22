@@ -18,13 +18,8 @@ import java.security.InvalidParameterException;
 import java.util.NoSuchElementException;
 
 
-/**
- * Type casting {@link #tv} (and also for Button)
- * is required with API<26. We are working with Android 7.0 API 24.
- */
 public class MainActivity extends AppCompatActivity {
 
-    TextView tv;
     Game g;
 
     @Override
@@ -33,11 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         g = new Game(getBaseContext());
-
-        tv = (TextView) findViewById(R.id.textView);
-
         setupButtons();
-
         redraw();
     }
 
@@ -97,15 +88,12 @@ public class MainActivity extends AppCompatActivity {
      */
     private void redraw()
     {
-        tv.setText(null);
         GridView matrix = (GridView) findViewById(R.id.matrix);
         matrix.setOnTouchListener(new View.OnTouchListener() {
-
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 return event.getAction() == MotionEvent.ACTION_MOVE;
             }
-
         });
         GraphicsHandler GH = new GraphicsHandler(this, this.g, matrix);
         GH.updateGridView();

@@ -49,7 +49,7 @@ public class Position {
     {
         Position H = this.copy();
         H.moveInDirection(dir);
-        if(H.getX() > x || H.getX() < 0 || H.getY() > y || H.getY() < 0)
+        if( !(H.getX() < x && H.getX() >= 0) || !(H.getY() < y && H.getY() >= 0) )
             return null;
 
         return H;

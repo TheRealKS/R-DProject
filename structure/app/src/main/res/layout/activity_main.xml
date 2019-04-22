@@ -40,14 +40,6 @@
             android:layout_height="wrap_content"
             android:text="LEFT" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="HALLO"
-            android:textAlignment="center"
-            android:textSize="34sp" />
-
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

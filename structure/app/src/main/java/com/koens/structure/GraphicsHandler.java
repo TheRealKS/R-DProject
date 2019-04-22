@@ -65,9 +65,9 @@ public class GraphicsHandler
     enum Sprite
     {
         UNKNOWN("placeholder"),
-        FLAGTILE("key"),
+        FLAGTILE("wall_"),
         TILE("wall_"),
-        SLOT("arrow");
+        SLOT("wall_");
 
         private String spriteId;
 
@@ -121,7 +121,6 @@ public class GraphicsHandler
             {
                 Position pos    = new Position(p, q);
                 Sprite s        = findSprite(currentMatrix[p][q]);
-                System.out.println(s.getSpriteId());
                 map.put(pos, new Tuple<Sprite, String>(s, this.getSuffix(pos, currentMatrix)));
             }
         }
@@ -133,6 +132,29 @@ public class GraphicsHandler
     }
 
 
+    enum TILE
+    {
+        VOID, WALL, FLOOR
+    }
+
+    private TILE tileType(Position cPOS, Direction dir, Tile[][] matrix)
+    {
+        return tileType(cPOS, new Direction[]{dir}, matrix);
+    }
+    private TILE tileType(Position cPOS, Direction dir[], Tile[][] matrix)
+    {
+        Position P = cPOS;
+        for(Direction d : dir)
+            P = P.getPosAfterMove(d, this.n + 2, this.m + 2);
+
+        if(P != null) {
+            if(matrix[P.getY()][P.getX()].canBeMovedInto())
+                return TILE.FLOOR;
+            else
+                return TILE.WALL;
+        }
+        return TILE.VOID;
+    }
     /**
      * Determine suffix for SpriteSet.
      * @param pos suffix for tile at position
@@ -143,57 +165,77 @@ public class GraphicsHandler
     {
         StringBuilder suffix = new StringBuilder();
 
-        Position N = pos.getPosAfterMove(Direction.NORTH, this.m, this.n);
-        Position E = pos.getPosAfterMove(Direction.EAST , this.m, this.n);
-        Position S = pos.getPosAfterMove(Direction.SOUTH, this.m, this.n);
-        Position W = pos.getPosAfterMove(Direction.WEST , this.m, this.n);
+        TILE N = tileType(pos, Direction.NORTH, matrix);
+        TILE E = tileType(pos, Direction.EAST, matrix);
+        TILE S = tileType(pos, Direction.SOUTH, matrix);
+        TILE W = tileType(pos, Direction.WEST, matrix);
 
-        boolean wallN, wallE, wallS, wallW, h, v; // north east south west horizontal vertical
+        boolean h = (W == TILE.WALL && E == TILE.WALL);
+        boolean v = (N == TILE.WALL && S == TILE.WALL);
 
-        if(N != null) { wallN = !(matrix[N.getX()][N.getY()].canBeMovedInto()); }
-        else { wallN = true; }
 
-        if(E != null) { wallE = !(matrix[E.getX()][E.getY()].canBeMovedInto()); }
-        else { wallE = true; }
+        if(h)
+        {
+            if(v) {
+                return "hv";
+            } else if(S == TILE.WALL) {
+                return "hs";
+            } else {
+                return "h";
+            }
+        }
+        else if (v)
+        {
+            suffix.append("v");
+            if(E == TILE.WALL || W == TILE.WALL)
+            {
+               if(E == TILE.WALL)
+                   suffix.append('e');
+               else
+                   suffix.append('w');
+            }
+            else
+            {
+                if(W == TILE.FLOOR && E == TILE.FLOOR)
+                    suffix.append('2');
+                else if(W == TILE.VOID && E == TILE.FLOOR )
+                    suffix.append('1');
+                else if(E == TILE.VOID && W == TILE.FLOOR )
+                    suffix.append('0');
+            }
+            return suffix.toString();
+        }
+        else
+        {
+            if(N == TILE.WALL) suffix.append("n");
+            if(E == TILE.WALL) suffix.append("e");
+            if(S == TILE.WALL) suffix.append("s");
+            if(W == TILE.WALL) suffix.append("w");
+            String cur = suffix.toString();
 
-        if(S != null) { wallS = !(matrix[S.getX()][S.getY()].canBeMovedInto()); }
-        else { wallS = true; }
+            if(cur.equals("ne") || cur.equals("es") || cur.equals("sw") || cur.equals("nw"))
+            {
+                if(cur.equals("ne") && (tileType(pos, new Direction[]{Direction.NORTH, Direction.EAST}, matrix) == TILE.WALL))
+                    return "000";
+                if(cur.equals("es") && (tileType(pos, new Direction[]{Direction.EAST, Direction.SOUTH}, matrix) == TILE.WALL))
+                    return "000";
+                if(cur.equals("sw") && (tileType(pos, new Direction[]{Direction.SOUTH, Direction.WEST}, matrix) == TILE.WALL))
+                    return "000";
+                if(cur.equals("nw") && (tileType(pos, new Direction[]{Direction.NORTH, Direction.WEST}, matrix) == TILE.WALL))
+                    return "000";
+            }
+        }
 
-        if(W != null) { wallW = !(matrix[W.getX()][W.getY()].canBeMovedInto()); }
-        else { wallW = true; }
 
-        if( !wallN && !wallE && !wallS && !wallW ) // no surrounding walls, just tile then
+        if(suffix.length() < 2)
             return "000";
 
-        h = wallE && wallW;
-        v = wallN && wallS;
+        if(W == TILE.FLOOR || E == TILE.FLOOR)
+            suffix.append('0');
 
-        if(h) { suffix.append('h'); }
-        if(v) { suffix.append('v'); }
-
-        if(!v && (wallS || wallN))
-        {
-            if(wallS)
-                suffix.append('s');
-            else
-                suffix.append('n');
-        }
-
-        if(!h && (wallE || wallW)) // not horizontal but e xor w, then
-        {
-            if(wallE)
-                suffix.append('e');
-            else
-                suffix.append('w');
-        }
-
-
-        if(suffix.length() == 1) // then only one tile found, so add itself to comply with filenames
-            suffix.append(suffix.charAt(0));
-
-        suffix.append('1');
-        System.out.println("wall_"+suffix.toString());
+        System.out.println(suffix);
         return suffix.toString();
+
     }
 
     /**
@@ -227,9 +269,9 @@ public class GraphicsHandler
         if(this.gridView == null)
             return false;
 
-        this.readGameMatrix(); // fetch newest state of game into ::game;
+        this.readGameMatrix(); // fetch newest state of game into map;
 
-        MatrixAdapter MA = new MatrixAdapter(this.context, this.lastMap, this.n, this.m);
+        MatrixAdapter MA = new MatrixAdapter(this.context, this.lastMap, this.n, this.m, this.game);
         this.gridView.setAdapter(MA);
         this.gridView.setNumColumns(m + 2); // m + 2 is width @todo check if Im right
 

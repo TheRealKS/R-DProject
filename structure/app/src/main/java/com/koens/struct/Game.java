@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.koens.struct.entity.EntityManager;
+import com.koens.struct.entity.NonPlayableEntity;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -42,5 +43,15 @@ public class Game {
 
     public String getRepresentation() {
         return board.toString();
+    }
+
+    public NonPlayableEntity entityAtPosition(Position pos)
+    {
+        return this.entityManager.getPickUpAtPosition(pos);
+    }
+
+    public EntityManager getEM()
+    {
+        return this.entityManager;
     }
 }
