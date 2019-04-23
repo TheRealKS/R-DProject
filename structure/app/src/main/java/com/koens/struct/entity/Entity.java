@@ -4,33 +4,49 @@ import com.koens.struct.Board;
 import com.koens.struct.Direction;
 import com.koens.struct.Position;
 
-public abstract class Entity {
-
+/**
+ * Entities are all objects in the game that have some special behavior
+ * such as the player, boulder, water, etc.
+ * @author Koen
+ */
+public abstract class Entity
+{
+    /** If true, no collision allowed */
     protected boolean lock;
-    Position position = null;
+    protected Position position = null;
+    protected Board board;
+    public EntityType type;
 
-    Board board;
-
-    Position getPosition() {
+    /**
+     * @return Position of entity
+     */
+    public Position getPosition() {
         return position;
     }
 
-    void setPosition(Position p) {
+    /** @param p New position for entity */
+    public void setPosition(Position p) {
         this.position = p;
     }
 
-    void move(Direction d) {
+    /** @param d Direction in which entity must be moved */
+    public void move(Direction d) {
         this.position.moveInDirection(d);
     }
 
+    /** True if entity is locked */
     public boolean getLocked() {
         return lock;
     }
 
-    public void lock() {this.lock = true;}
+    /** Set entity to locked */
+    public void lock() {
+        this.lock = true;
+    }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (o instanceof Entity)
         {
             return ((Entity) o).getPosition().equals(this.position);

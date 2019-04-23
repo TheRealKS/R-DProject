@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.content.Context;
 
 /**
- * @author Karim Abdulahi
+ * Updates gridView according to game state.
  */
 public class GraphicsHandler
 {
@@ -66,8 +66,9 @@ public class GraphicsHandler
     {
         UNKNOWN("placeholder"),
         FLAGTILE("wall_"),
+        FLOOR("wall_000"),
         TILE("wall_"),
-        SLOT("wall_");
+        SLOT("placeholder");
 
         private String spriteId;
 
@@ -116,16 +117,20 @@ public class GraphicsHandler
 
         Map<Position, Tuple<Sprite, String>> map = new HashMap<>();
 
-        for(int p = 0; p < this.n + 2; p++) {
-            for (int q = 0; q < this.m + 2; q++)
+        for(int x = 0; x < this.n + 2; x++)
+        {
+            for (int y = 0; y < this.m + 2; y++)
             {
-                Position pos    = new Position(p, q);
-                Sprite s        = findSprite(currentMatrix[p][q]);
-                map.put(pos, new Tuple<Sprite, String>(s, this.getSuffix(pos, currentMatrix)));
+                Position pos    = new Position(x, y);
+                Sprite s        = findSprite(currentMatrix[x][y]);
+                String suffix = "";
+                if(s == Sprite.TILE)
+                    suffix = this.getSuffix(pos, currentMatrix);
+                map.put(pos, new Tuple<>(s, suffix));
             }
         }
 
-        map.put(null, new Tuple<Sprite, String>(Sprite.UNKNOWN, null)); // if null, than unknown
+        map.put(null, new Tuple<>(Sprite.UNKNOWN, null)); // if null, then unknown
         this.lastMap = map;
 
         return map;
@@ -148,7 +153,7 @@ public class GraphicsHandler
             P = P.getPosAfterMove(d, this.n + 2, this.m + 2);
 
         if(P != null) {
-            if(matrix[P.getY()][P.getX()].canBeMovedInto())
+            if(matrix[P.getX()][P.getY()].canBeMovedInto())
                 return TILE.FLOOR;
             else
                 return TILE.WALL;
@@ -249,6 +254,8 @@ public class GraphicsHandler
      */
     private Sprite findSprite(Tile t)
     {
+        if(t.canBeMovedInto())
+            return Sprite.FLOOR;
         String className    = t.getClass().getSimpleName(); // Classname of current child of Tile
         String EnumName     = className.toUpperCase(); // The value that should be in enum Sprite
 
@@ -271,9 +278,10 @@ public class GraphicsHandler
 
         this.readGameMatrix(); // fetch newest state of game into map;
 
+        System.out.println(this.toString());
         MatrixAdapter MA = new MatrixAdapter(this.context, this.lastMap, this.n, this.m, this.game);
         this.gridView.setAdapter(MA);
-        this.gridView.setNumColumns(m + 2); // m + 2 is width @todo check if Im right
+        this.gridView.setNumColumns(n + 2); // m + 2 is width @todo check if Im right
 
         // dynamic height of gridView
         ViewGroup.LayoutParams params = this.gridView.getLayoutParams();
@@ -282,6 +290,21 @@ public class GraphicsHandler
 
 
         return true;
+    }
+
+    public String toString()
+    {
+        StringBuilder str = new StringBuilder();
+        for(int i = 0 ; i < this.m + 2; i++)
+        {
+            for (int j = 0; j < this.n + 2; j++)
+            {
+                final Position pos = new Position(j, i);
+                str.append(pos + this.lastMap.get(pos).toString() );
+            }
+            str.append("\n");
+        }
+        return str.toString();
     }
 
 

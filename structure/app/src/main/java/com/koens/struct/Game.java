@@ -20,7 +20,7 @@ public class Game {
     private long startTime;
 
     public Game(Context c) {
-        this.board = new Board(8, 8, null);
+        this.board = new Board(10, 7, null);
         this.entityManager = new EntityManager(new Position(1, 1), this.board);
         this.board.entityList = entityManager;
         this.ctx = c;

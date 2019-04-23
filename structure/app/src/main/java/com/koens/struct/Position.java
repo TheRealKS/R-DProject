@@ -1,36 +1,62 @@
 package com.koens.struct;
 
-public class Position {
+/**
+ * Manages position in 2-dimensional array such that
+ * array[x][y] is represented as Position(x,y).
+ * @author Koen
+ */
+public class Position
+{
     private int x;
     private int y;
 
-    public Position(int x, int y) {
+    public Position(int x, int y)
+    {
         this.x = x;
         this.y = y;
     }
 
-    public int getX() {
+    /**
+     * Accessor for x-coordinate.
+     * @return x
+     */
+    public int getX()
+    {
         return x;
     }
 
-    public int getY() {
+    /**
+     * Accessor for y-coordinate.
+     * @return y
+     */
+    public int getY()
+    {
         return y;
     }
 
+    /**
+     * Apply mutation to this instance of object
+     * see {@link #getPosAfterMove(Direction, int, int)} if
+     * you need the position after mutation without altering
+     * current state.
+     *
+     * @param direction Element of {@link Direction}
+     */
     public void moveInDirection(Direction direction)
     {
-        switch (direction) {
+        switch (direction)
+        {
             case NORTH:
-                this.x--;
+                this.y--;
                 break;
             case SOUTH:
-                this.x++;
-                break;
-            case EAST:
                 this.y++;
                 break;
+            case EAST:
+                this.x++;
+                break;
             case WEST:
-                this.y--;
+                this.x--;
                 break;
         }
     }
@@ -55,20 +81,20 @@ public class Position {
         return H;
     }
 
-    public Position copy() {
+    /**
+     * Copy
+     * @return copy of current object such that hashCode is the same.
+     */
+    public Position copy()
+    {
         return new Position(x, y);
-   }
+    }
 
 
     @Override
     public int hashCode()
     {
-        int acc = 0;
-        String ascii = this.toString();
-
-        for(int i = 0; i < ascii.length(); i++)
-            acc += ascii.charAt(i) * acc * 31;
-        return acc;
+        return this.x + this.y*1117;
     }
 
 

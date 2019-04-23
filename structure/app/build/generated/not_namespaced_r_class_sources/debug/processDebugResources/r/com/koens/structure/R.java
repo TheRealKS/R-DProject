@@ -2528,6 +2528,7 @@ public final class R {
     public static final int wall_vw0=0x7f06006b;
     public static final int wall_w=0x7f06006c;
     public static final int wall_whaat=0x7f06006d;
+    public static final int water_tile_0=0x7f06006e;
   }
   public static final class id {
     public static final int BTN_EAST=0x7f070000;

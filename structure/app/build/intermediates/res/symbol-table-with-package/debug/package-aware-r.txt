@@ -565,6 +565,7 @@ drawable wall_vw
 drawable wall_vw0
 drawable wall_w
 drawable wall_whaat
+drawable water_tile_0
 id BTN_EAST
 id BTN_NORTH
 id BTN_SOUTH

@@ -26,16 +26,18 @@ public class EntityManager {
         this.p = new Player(playerPosition, b);
         this.pickups = new ArrayList<>();
 
-        pickups.add(new PushableEntity(new Position(2, 2), b, PushableEntityType.BOULDER));
-        pickups.add(new PushableEntity(new Position(4, 5), b, PushableEntityType.BOULDER));
-        pickups.add(new PushableEntity(new Position(7, 2), b, PushableEntityType.KEY));
-        pickups.add(new NonMovingEntity(new Position(4, 4), b, NonMovingEntityType.WATER));
-        pickups.add(new NonMovingEntity(new Position(5, 6), b, NonMovingEntityType.DOOR));
+        pickups.add(new PushableEntity(new Position(2, 2), b, EntityType.BOULDER));
+        pickups.add(new PushableEntity(new Position(4, 5), b, EntityType.BOULDER));
+        pickups.add(new PushableEntity(new Position(7, 2), b, EntityType.KEY));
+        pickups.add(new NonMovingEntity(new Position(4, 4), b, EntityType.WATER));
+        pickups.add(new NonMovingEntity(new Position(5, 6), b, EntityType.DOOR));
     }
 
+
+    public Position getPlayerPosition() {
+        return this.getPlayerPosition(false);
+    }
     /**
-     * @todo Add 'default' paramater by doing overloading
-     *
      * @param copy
      * @return
      */

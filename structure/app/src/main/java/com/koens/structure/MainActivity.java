@@ -18,6 +18,9 @@ import java.security.InvalidParameterException;
 import java.util.NoSuchElementException;
 
 
+/**
+ * Game activity
+ */
 public class MainActivity extends AppCompatActivity {
 
     Game g;
@@ -29,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
         g = new Game(getBaseContext());
         setupButtons();
-        redraw();
     }
+
 
     /**
      * E_BUTTON (Enumeration of buttons) contains the
@@ -80,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
             );
 
         }
+        redraw();
+
     }
 
     /**

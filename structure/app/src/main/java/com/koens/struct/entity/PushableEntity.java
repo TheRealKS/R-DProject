@@ -5,28 +5,36 @@ import com.koens.struct.Direction;
 import com.koens.struct.Position;
 import com.koens.struct.Tile;
 
-public class PushableEntity extends NonPlayableEntity {
+public class PushableEntity extends NonPlayableEntity
+{
 
-    public PushableEntityType type;
     private Entity lastCollidingEntity;
 
-    public PushableEntity(Position position, Board b, PushableEntityType t) {
+    public PushableEntity(Position position, Board b, EntityType t)
+    {
         super(position, b);
         this.type = t;
     }
 
     @Override
-    public void collide(Direction from, Entity collider) {
-        if (this.lock) return;
+    public void collide(Direction from, Entity collider)
+    {
+        if (this.lock)
+            return;
+
         Direction to = Direction.opposite(from);
-        if (board.movePossible(to, position.copy())) {
+        if (board.movePossible(to, position.copy()))
+        {
             Position h = position.copy();
             h.moveInDirection(to);
             Entity e = board.entityAt(h);
-            if (e != null) {
+            if (e != null)
+            {
                 lastCollidingEntity = collider;
                 e.collide(from, this);
-            } else {
+            }
+            else {
+
                 collider.approveCollision(this);
                 this.position.moveInDirection(to);
                 Tile t = board.getTileAtPosition(this.position);
@@ -36,7 +44,8 @@ public class PushableEntity extends NonPlayableEntity {
     }
 
     @Override
-    void approveCollision(Entity collisionObject) {
+    void approveCollision(Entity collisionObject)
+    {
         board.removeEnititiesAfterCollision((NonMovingEntity)collisionObject, this);
         lastCollidingEntity.approveCollision(this);
     }

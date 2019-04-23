@@ -564,6 +564,7 @@ int drawable wall_vw 0x7f06006a
 int drawable wall_vw0 0x7f06006b
 int drawable wall_w 0x7f06006c
 int drawable wall_whaat 0x7f06006d
+int drawable water_tile_0 0x7f06006e
 int id BTN_EAST 0x7f070000
 int id BTN_NORTH 0x7f070001
 int id BTN_SOUTH 0x7f070002

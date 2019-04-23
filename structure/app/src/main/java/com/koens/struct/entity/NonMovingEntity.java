@@ -6,20 +6,25 @@ import com.koens.struct.Position;
 
 public class NonMovingEntity extends NonPlayableEntity {
 
-    public NonMovingEntityType type;
 
-    public NonMovingEntity(Position p, Board b, NonMovingEntityType type) {
+    public NonMovingEntity(Position p, Board b, EntityType type) {
         super(p, b);
         this.type = type;
     }
 
     @Override
-    void collide(Direction from, Entity collider) {
-        if (collider instanceof PushableEntity) {
+    void collide(Direction from, Entity collider)
+    {
+        if (collider instanceof PushableEntity)
+        {
             PushableEntity p = (PushableEntity)collider;
-            if (type == NonMovingEntityType.WATER && p.type == PushableEntityType.BOULDER) {
+
+            if (type == EntityType.WATER && p.type == EntityType.BOULDER)
+            {
                 collider.approveCollision(this);
-            } else if (type == NonMovingEntityType.DOOR && p.type == PushableEntityType.KEY) {
+            }
+            else if (type == EntityType.DOOR && p.type == EntityType.KEY)
+            {
                 collider.approveCollision(this);
             }
         }

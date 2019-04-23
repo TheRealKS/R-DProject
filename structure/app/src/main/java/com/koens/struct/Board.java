@@ -2,20 +2,26 @@ package com.koens.struct;
 
 import com.koens.struct.entity.Entity;
 import com.koens.struct.entity.EntityManager;
+import com.koens.struct.entity.EntityType;
 import com.koens.struct.entity.NonMovingEntity;
-import com.koens.struct.entity.NonMovingEntityType;
 import com.koens.struct.entity.NonPlayableEntity;
 import com.koens.struct.entity.PushableEntity;
-import com.koens.struct.entity.PushableEntityType;
 
-public class Board {
+/**
+ * Holds current game state, in particular its matrix-representation.
+ *
+ * @author Koen
+ */
+public class Board
+{
 
     private Tile[][] configuration;
     EntityManager entityList;
 
     private int n, m;
 
-    public Board(int n, int m, EntityManager mn) {
+    public Board(int n, int m, EntityManager mn)
+    {
         this.n = n;
         this.m = m;
 
@@ -27,12 +33,25 @@ public class Board {
 
     //Some sort of parser?
 
-    public boolean playerMovePossible(Direction dir) {
+    /**
+     * Asserts if player can move in direction
+     * @param dir Direction to move
+     * @return true if possible, false else wise.
+     */
+    public boolean playerMovePossible(Direction dir)
+    {
         Position hypotheticalPosition = entityList.getPlayerPosition(true);
         return movePossible(dir, hypotheticalPosition);
     }
 
-    public boolean movePossible(Direction dir, Position p) {
+    /**
+     * Asserts if move from position is possible.
+     * @param dir Direction to move
+     * @param p current position
+     * @return bool
+     */
+    public boolean movePossible(Direction dir, Position p)
+    {
         p.moveInDirection(dir);
         if (p.getX() <= 0 || p.getX() >= n + 2) {
             return false;
@@ -49,19 +68,43 @@ public class Board {
         return true;
     }
 
-    public Tile getTileAtPosition(Position position) {
+    /**
+     * Get element of game matrix
+     * @param position position of element
+     * @return the Tile
+     */
+    public Tile getTileAtPosition(Position position)
+    {
         return this.configuration[position.getX()][position.getY()];
     }
 
-    public Entity entityAt(Position p) {
+    /**
+     * Get entity at position p
+     * @param p Position
+     * @return Entity
+     */
+    public Entity entityAt(Position p)
+    {
         return entityList.getPickUpAtPosition(p);
     }
 
-    public Boolean checkVictory() {
-        for (Tile[] t : configuration) {
-            for (Tile t1 : t) {
-                if (t1 instanceof Slot || t1 instanceof FlagTile) {
-                    if (!t1.getOccupied()) {
+    /**
+     * @todo Tidy this up, seems to be too computationally expensive.
+     * Assert if all condition for winning-state
+     * are met.
+     *
+     * @return True if finished, false else wise.
+     */
+    public Boolean checkVictory()
+    {
+        for (Tile[] t : configuration)
+        {
+            for (Tile t1 : t)
+            {
+                if (t1 instanceof Slot || t1 instanceof FlagTile)
+                {
+                    if (!t1.getOccupied())
+                    {
                         return false;
                     }
                 }
@@ -70,7 +113,9 @@ public class Board {
         return true;
     }
 
-    private void initBoard() {
+    // @todo make a scenario generator and invoke this to generate unique challenges.
+    private void initBoard()
+    {
         int i;
         for (i = 0; i <= n + 1; i++) {
             configuration[i][0] = new Tile(false, new Position(i, 0));
@@ -83,7 +128,7 @@ public class Board {
 
         for (i = 1; i <= n; i++) {
             for (int j = 1; j <= m; j++) {
-                if(j == 5)
+                if(i == 5)
                     configuration[i][j] = new Tile(false, new Position(i, j));
                 else
                     configuration[i][j] = new Tile(true, new Position(i, j));
@@ -94,6 +139,7 @@ public class Board {
         configuration[6][7] = new FlagTile(new Position(6, 7));
     }
 
+    // @todo Maybe remove this.
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -106,14 +152,14 @@ public class Board {
                 } else if (e != null) {
                     if (e instanceof NonMovingEntity) {
                         NonMovingEntity n = (NonMovingEntity) e;
-                        if (n.type == NonMovingEntityType.DOOR) {
+                        if (n.type == EntityType.DOOR) {
                             sb.append("D");
                         } else {
                             sb.append("W");
                         }
                     } else {
                         PushableEntity p = (PushableEntity)e;
-                        if (p.type == PushableEntityType.BOULDER) {
+                        if (p.type == EntityType.BOULDER) {
                             sb.append("B");
                         } else {
                             sb.append("K");
@@ -146,12 +192,19 @@ public class Board {
         return sb.toString();
     }
 
-    public void removeEnititiesAfterCollision(NonMovingEntity e, PushableEntity pushableEntity) {
+    public void removeEnititiesAfterCollision(NonMovingEntity e, PushableEntity pushableEntity)
+    {
         entityList.remove(e);
         entityList.remove(pushableEntity);
     }
 
-    public int getN() {return this.n; }
-    public int getM() {return this.m; }
-    public Tile[][] getConfiguration() {return this.configuration; }
+    public int getN() {
+        return this.n;
+    }
+    public int getM() {
+        return this.m;
+    }
+    public Tile[][] getConfiguration() {
+        return this.configuration;
+    }
 }
