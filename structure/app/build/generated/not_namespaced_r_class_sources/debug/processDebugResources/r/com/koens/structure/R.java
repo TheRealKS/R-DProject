@@ -2529,6 +2529,21 @@ public final class R {
     public static final int wall_w=0x7f06006c;
     public static final int wall_whaat=0x7f06006d;
     public static final int water_tile_0=0x7f06006e;
+    public static final int water_tile_1=0x7f06006f;
+    public static final int water_tile_10=0x7f060070;
+    public static final int water_tile_11=0x7f060071;
+    public static final int water_tile_12=0x7f060072;
+    public static final int water_tile_13=0x7f060073;
+    public static final int water_tile_14=0x7f060074;
+    public static final int water_tile_15=0x7f060075;
+    public static final int water_tile_2=0x7f060076;
+    public static final int water_tile_3=0x7f060077;
+    public static final int water_tile_4=0x7f060078;
+    public static final int water_tile_5=0x7f060079;
+    public static final int water_tile_6=0x7f06007a;
+    public static final int water_tile_7=0x7f06007b;
+    public static final int water_tile_8=0x7f06007c;
+    public static final int water_tile_9=0x7f06007d;
   }
   public static final class id {
     public static final int BTN_EAST=0x7f070000;

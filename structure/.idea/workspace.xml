@@ -45,51 +45,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68845dfd-f1c5-41cf-b1e1-0650623f0456" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/EntityType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/com/koens/structure/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/com/koens/structure/R.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/debug.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/Position$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/Position$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/Position.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/Position.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/Slot.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/Slot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/Tile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/entity/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/entity/Entity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/entity/EntityManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/entity/EntityManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/entity/NonPlayableEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/entity/NonPlayableEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/entity/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/koens/struct/entity/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/symbols/debug/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/symbols/debug/R.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/16/com/koens/struct/entity/Entity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/16/com/koens/struct/entity/Entity.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/16/com/koens/struct/entity/EntityManager.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/16/com/koens/struct/entity/EntityManager.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/16/com/koens/struct/entity/NonPlayableEntity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/16/com/koens/struct/entity/NonPlayableEntity.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/16/com/koens/struct/entity/Player.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/16/com/koens/struct/entity/Player.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/0/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/0/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/FlagTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/FlagTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/Slot.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/Slot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/EntityManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/EntityManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/NonMovingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/NonMovingEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/NonMovingEntityType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/NonPlayableEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/NonPlayableEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/PushableEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/PushableEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/PushableEntityType.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/koens/structure/GraphicsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/koens/structure/GraphicsHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/koens/structure/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/koens/structure/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/koens/structure/MatrixAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/koens/structure/MatrixAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/koens/structure/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/koens/structure/Tuple.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -141,95 +111,9 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/Entity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
-              <folding>
-                <element signature="e#376#377#0" expanded="true" />
-                <element signature="e#407#408#0" expanded="true" />
-                <element signature="e#504#505#0" expanded="true" />
-                <element signature="e#537#538#0" expanded="true" />
-                <element signature="e#586#587#0" expanded="true" />
-                <element signature="e#634#635#0" expanded="true" />
-                <element signature="e#728#729#0" expanded="true" />
-                <element signature="e#755#756#0" expanded="true" />
-                <element signature="e#838#839#0" expanded="true" />
-                <element signature="e#870#871#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/EntityType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
-              <folding>
-                <element signature="e#312#313#0" expanded="true" />
-                <element signature="e#348#349#0" expanded="true" />
-                <element signature="e#416#417#0" expanded="true" />
-                <element signature="e#454#455#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/PushableEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/EntityManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
-              <folding>
-                <element signature="e#1234#1235#0" expanded="true" />
-                <element signature="e#1280#1281#0" expanded="true" />
-                <element signature="e#1543#1544#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/Board.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="85" column="20" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/NonPlayableEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
+            <state relative-caret-position="120">
               <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -239,12 +123,14 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/Slot.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/structure/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="256">
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2921#2922#0" expanded="true" />
+                <element signature="e#2956#2957#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -253,13 +139,38 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/structure/MatrixAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="112" column="17" selection-start-line="112" selection-start-column="17" selection-end-line="112" selection-end-column="17" />
+            <state relative-caret-position="403">
+              <caret line="146" column="48" selection-start-line="146" selection-start-column="48" selection-end-line="146" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#int2pos#0;class#MatrixAdapter#0" />
+                <element signature="e#2029#2030#0" expanded="true" />
+                <element signature="e#2076#2077#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/structure/GraphicsHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="335">
+              <caret line="343" column="64" selection-start-line="343" selection-start-column="64" selection-end-line="343" selection-end-column="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#tileType#0;class#GraphicsHandler#0" />
+                <element signature="method#tileType#1;class#GraphicsHandler#0" />
+                <element signature="method#getSuffix#0;class#GraphicsHandler#0" />
+                <element signature="docComment;method#findSprite#0;class#GraphicsHandler#0" />
+                <element signature="e#9727#9733#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/captures/com.koens.structure_2019.04.23_17.34.li">
+          <provider selected="true" editor-type-id="capture-editor" />
         </entry>
       </file>
     </leaf>
@@ -294,20 +205,20 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/koens/struct/Direction.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/koens/structure/Tuple.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/koens/structure/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/koens/structure/GraphicsHandler.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/koens/struct/Position.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/koens/struct/FlagTile.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/koens/struct/Tile.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/koens/struct/Game.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/koens/struct/Slot.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/koens/struct/Board.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/NonMovingEntity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/PushableEntity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/Entity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/NonPlayableEntity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/EntityType.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/EntityManager.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/NonMovingEntity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/koens/structure/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/koens/structure/GraphicsHandler.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/koens/structure/MatrixAdapter.java" />
       </list>
     </option>
@@ -363,11 +274,6 @@
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="koens" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="structure" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="structure" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
             </path>
             <path>
               <item name="structure" type="1abcf292:AndroidViewProjectNode" />
@@ -525,7 +431,7 @@
       <window_info id="Build Variants" order="5" side_tool="true" />
       <window_info id="Image Layers" order="6" />
       <window_info id="Designer" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="8" visible="true" weight="0.23908414" />
+      <window_info content_ui="combo" id="Project" order="8" visible="true" weight="0.23908414" />
       <window_info id="Resources Explorer" order="9" weight="0.32960597" />
       <window_info anchor="bottom" id="Find" order="0" weight="0.32970297" />
       <window_info anchor="bottom" id="Logcat" order="1" />
@@ -533,9 +439,9 @@
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.32970297" />
       <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="5" weight="0.32970297" />
-      <window_info anchor="bottom" id="Build" order="6" visible="true" weight="0.15346535" />
+      <window_info anchor="bottom" id="Build" order="6" weight="0.36633664" />
       <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.32871288" />
-      <window_info anchor="bottom" id="Run" order="8" weight="0.3881188" />
+      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.3881188" />
       <window_info anchor="bottom" id="Debug" order="9" weight="0.3029703" />
       <window_info anchor="right" auto_hide="true" x="0" y="0" width="430" height="880" id="Documentation" order="0" type="SLIDING" weight="0.32960597" />
       <window_info anchor="right" id="Preview" order="1" weight="0.32904148" />
@@ -695,30 +601,6 @@
     <entry file="file://$PROJECT_DIR$/captures/com.koens.structure_2019.04.23_14.57.li">
       <provider selected="true" editor-type-id="capture-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/structure/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="86" selection-start-line="86" selection-end-line="86" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/structure/GraphicsHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="263" selection-start-line="263" selection-end-line="263" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#tileType#0;class#GraphicsHandler#0" />
-            <element signature="method#tileType#1;class#GraphicsHandler#0" />
-            <element signature="method#getSuffix#0;class#GraphicsHandler#0" />
-            <element signature="docComment;method#findSprite#0;class#GraphicsHandler#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/Position.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -790,17 +672,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/Player.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" column="28" lean-forward="true" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/NonMovingEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="255">
+          <caret line="85" column="20" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -811,16 +686,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/PushableEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -840,29 +705,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/NonPlayableEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/Entity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
+        <state relative-caret-position="100">
           <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
           <folding>
             <element signature="e#376#377#0" expanded="true" />
@@ -879,20 +724,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/Board.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/PushableEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="85" column="20" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
+        <state relative-caret-position="325">
+          <caret line="26" column="9" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/EntityManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+        <state relative-caret-position="840">
+          <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
           <folding>
             <element signature="e#1234#1235#0" expanded="true" />
             <element signature="e#1280#1281#0" expanded="true" />
@@ -901,12 +753,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/structure/MatrixAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/NonPlayableEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="112" column="17" selection-start-line="112" selection-start-column="17" selection-end-line="112" selection-end-column="17" />
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/entity/NonMovingEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/captures/com.koens.structure_2019.04.23_17.33.li">
+      <provider selected="true" editor-type-id="capture-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/water_tile_4.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/water_tile_15.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/captures/com.koens.structure_2019.04.23_17.34.li">
+      <provider selected="true" editor-type-id="capture-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/struct/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/structure/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2921#2922#0" expanded="true" />
+            <element signature="e#2956#2957#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/structure/GraphicsHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="343" column="64" selection-start-line="343" selection-start-column="64" selection-end-line="343" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#tileType#0;class#GraphicsHandler#0" />
+            <element signature="method#tileType#1;class#GraphicsHandler#0" />
+            <element signature="method#getSuffix#0;class#GraphicsHandler#0" />
+            <element signature="docComment;method#findSprite#0;class#GraphicsHandler#0" />
+            <element signature="e#9727#9733#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/koens/structure/MatrixAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="146" column="48" selection-start-line="146" selection-start-column="48" selection-end-line="146" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#int2pos#0;class#MatrixAdapter#0" />
+            <element signature="e#2029#2030#0" expanded="true" />
+            <element signature="e#2076#2077#0" expanded="true" />
           </folding>
         </state>
       </provider>

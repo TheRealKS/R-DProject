@@ -24,6 +24,7 @@ import java.util.NoSuchElementException;
 public class MainActivity extends AppCompatActivity {
 
     Game g;
+    GraphicsHandler GH;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         g = new Game(getBaseContext());
+
+
+        GridView matrix = (GridView) findViewById(R.id.matrix);
+        matrix.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return event.getAction() == MotionEvent.ACTION_MOVE;
+            }
+        });
+        GH = new GraphicsHandler(this, this.g, matrix);
+        GH.updateGridView();
+
         setupButtons();
+
     }
 
 
@@ -93,14 +107,6 @@ public class MainActivity extends AppCompatActivity {
      */
     private void redraw()
     {
-        GridView matrix = (GridView) findViewById(R.id.matrix);
-        matrix.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return event.getAction() == MotionEvent.ACTION_MOVE;
-            }
-        });
-        GraphicsHandler GH = new GraphicsHandler(this, this.g, matrix);
         GH.updateGridView();
     }
 }

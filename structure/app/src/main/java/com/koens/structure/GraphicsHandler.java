@@ -1,15 +1,22 @@
 package com.koens.structure;
 
 import com.koens.struct.*;
+import com.koens.struct.entity.EntityType;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import android.view.View;
 import android.widget.GridView;
 import android.view.ViewGroup;
 
 import android.content.Context;
+import android.widget.ImageView;
 
 /**
  * Updates gridView according to game state.
@@ -37,6 +44,7 @@ public class GraphicsHandler
 
     private Context context;
 
+    private Timer timer;
 
     /**
      * Simple constructor.
@@ -52,8 +60,12 @@ public class GraphicsHandler
         this.gridView = gridView;
         this.context = context;
 
+        this.timer = new Timer("UpdateWater");
+        timer.schedule(new UpdateWaterTiles(this.gridView, context), 200, 200);
+
         this.lastMap = new HashMap<>();
         this.readGameMatrix();
+
     }
 
 
@@ -288,7 +300,6 @@ public class GraphicsHandler
         params.height = (this.m + 2) * this.gridView.getColumnWidth(); //@todo check if not n.
         this.gridView.setLayoutParams(params);
 
-
         return true;
     }
 
@@ -307,6 +318,67 @@ public class GraphicsHandler
         return str.toString();
     }
 
+}
+
+/**
+ * Auxiliary class for TimerTask to update dynamic tiles.
+ */
+class UpdateWaterTiles extends TimerTask
+{
+    private int counter;
+    private GridView gridView;
+    private Context context;
+
+    public UpdateWaterTiles(GridView gridView, Context context)
+    {
+        this.counter    = 0;
+        this.gridView   = gridView;
+        this.context = context;
+    }
+
+    private static ArrayList<View> getViewsByTag(GridView root, String tag){
+        ArrayList<View> views = new ArrayList<View>();
+
+        for (int i = 0; i < root.getCount(); i++)
+        {
+            final View child = (View) root.getAdapter().getItem(i);
+            if(child == null) continue;
+
+            final Object tagObj = child.getTag();
+            if (tagObj != null && tagObj.equals(tag)) {
+                views.add(child);
+            }
+
+        }
+        return views;
+    }
+
+    @Override
+    public void run()
+    {
+        counter++;
+        final int i = counter % 16;
+        final String sprite = "water_tile_" + Integer.toString(i);
+        ArrayList<View> water = getViewsByTag(gridView, EntityType.WATER.toString());
+
+        if(water.size() == 0)
+        {
+            System.out.println("No view found with water tag. " + i);
+            return;
+        }
+
+        final int id = context.getResources().getIdentifier(sprite, "drawable", context.getPackageName());
 
 
+        if(id <= 0)
+            System.out.println("Failed to update water tile with spriteName " + sprite);
+        else {
+            for (View v : water)
+            {
+                if(v instanceof ImageView)
+                    ((ImageView) v).setImageResource(id);
+            }
+
+        }
+    }
 }

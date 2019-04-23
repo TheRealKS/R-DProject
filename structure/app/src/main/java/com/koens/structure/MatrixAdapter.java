@@ -20,6 +20,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.content.Context;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.lang.Math;
 
@@ -35,6 +39,7 @@ public class MatrixAdapter extends BaseAdapter
     private Map<Position, Tuple<GraphicsHandler.Sprite, String>> data;
     private int n, m;
     private Game game;
+    private Map<Integer, ImageView> items;
 
     public MatrixAdapter(Context context, Map<Position, Tuple<GraphicsHandler.Sprite, String>> data,
                          int n, int m, Game game)
@@ -44,6 +49,7 @@ public class MatrixAdapter extends BaseAdapter
         this.n = n;
         this.m = m;
         this.game = game;
+        this.items = new HashMap<>();
     }
 
 
@@ -68,8 +74,9 @@ public class MatrixAdapter extends BaseAdapter
     @Override
     public Object getItem(int position)
     {
-        return null;
+        return this.items.get(  Integer.valueOf(position) );
     }
+
 
     // GridView will get data from here
     // i.e. will give the viewdata for every cel in the gridview
@@ -112,6 +119,8 @@ public class MatrixAdapter extends BaseAdapter
                 layers[1] = r.getDrawable(R.drawable.pm, null);
             else if(entity != null)
             {
+                imageView.setTag(entity.type);
+
                 String sprite = entity.type.getDrawableName();
                 drawableId = this.context.getResources().getIdentifier(sprite, "drawable", this.context.getPackageName());
 
@@ -132,11 +141,10 @@ public class MatrixAdapter extends BaseAdapter
             LayerDrawable layerDrawable = new LayerDrawable(layers);
 
             imageView.setImageDrawable(layerDrawable);
-            imageView.setTag(pos.toString());
         }
 
         imageView.setAdjustViewBounds(true);
-
+        this.items.put(Integer.valueOf(position), imageView);
         return imageView;
     }
 

@@ -15,15 +15,13 @@ public class NonMovingEntity extends NonPlayableEntity {
     @Override
     void collide(Direction from, Entity collider)
     {
-        if (collider instanceof PushableEntity)
+        if (collider.type.isPushable())
         {
-            PushableEntity p = (PushableEntity)collider;
-
-            if (type == EntityType.WATER && p.type == EntityType.BOULDER)
+            if (type == EntityType.WATER && collider.type == EntityType.BOULDER)
             {
                 collider.approveCollision(this);
             }
-            else if (type == EntityType.DOOR && p.type == EntityType.KEY)
+            else if (type == EntityType.DOOR && collider.type == EntityType.KEY)
             {
                 collider.approveCollision(this);
             }
