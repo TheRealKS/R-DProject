@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String level= getIntent().getStringExtra("SELECTED_LEVEL");
+
         g = new Game(getBaseContext());
 
         tv = findViewById(R.id.textView);

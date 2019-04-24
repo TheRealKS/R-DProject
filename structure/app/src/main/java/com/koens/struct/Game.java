@@ -1,5 +1,6 @@
 package com.koens.struct;
 
+import android.app.Activity;
 import android.content.Context;
 import android.widget.Toast;
 
@@ -31,6 +32,8 @@ public class Game {
                     entityManager.dropPickup(entityManager.getPlayerPosition(false));
                     if (board.checkVictory()) {
                         Toast.makeText(ctx, "You win!", Toast.LENGTH_LONG).show();
+                        //(Sleep?) + finish() - return to level select
+                        ((Activity)ctx).finish();
                     }
                 }
             }

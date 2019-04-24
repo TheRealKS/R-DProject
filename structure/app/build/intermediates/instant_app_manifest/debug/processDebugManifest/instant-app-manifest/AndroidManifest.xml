@@ -18,12 +18,15 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.koens.structure.MainActivity" >
+        <activity android:name="com.koens.structure.levelSelect" />
+        <activity android:name="com.koens.structure.startingScreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.koens.structure.MainActivity" >
         </activity>
 
         <provider
