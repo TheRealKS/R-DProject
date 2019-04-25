@@ -581,10 +581,6 @@ drawable water_tile_6
 drawable water_tile_7
 drawable water_tile_8
 drawable water_tile_9
-id BTN_EAST
-id BTN_NORTH
-id BTN_SOUTH
-id BTN_WEST
 id action0
 id action_bar
 id action_bar_activity_content

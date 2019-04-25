@@ -131,6 +131,7 @@ public class MatrixAdapter extends BaseAdapter
             else
             {
                 layers[1] = new ColorDrawable(Color.TRANSPARENT);
+                imageView.setTag(pos);
             }
 
 

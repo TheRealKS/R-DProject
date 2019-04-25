@@ -16,30 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="547dp" />
 
-        <Button
-            android:id="@+id/BTN_NORTH"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="UP" />
-
-        <Button
-            android:id="@+id/BTN_SOUTH"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="DOWN" />
-
-        <Button
-            android:id="@+id/BTN_EAST"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="RIGHT" />
-
-        <Button
-            android:id="@+id/BTN_WEST"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="LEFT" />
-
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

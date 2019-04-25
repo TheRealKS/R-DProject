@@ -136,6 +136,7 @@ public class GraphicsHandler
             for (int y = 0; y < this.m + 2; y++)
             {
                 Position pos    = new Position(x, y);
+                System.out.println(pos);
                 Sprite s        = findSprite(currentMatrix[x][y]);
                 String suffix = "";
                 if(s == Sprite.TILE)
@@ -298,6 +299,7 @@ public class GraphicsHandler
         // dynamic height of gridView
         ViewGroup.LayoutParams params = this.gridView.getLayoutParams();
         params.height = (this.m + 2) * this.gridView.getColumnWidth(); //@todo check if not n.
+        if(params.height < 100) { params.height = 500; }
         this.gridView.setLayoutParams(params);
 
         return true;
@@ -312,12 +314,8 @@ public class GraphicsHandler
             for (int j = 0; j < this.n + 2; j++)
             {
                 final Position pos = new Position(j, i);
+                str.append(pos + this.lastMap.get(pos).toString() );
 
-                Tuple<Sprite, String>  t = lastMap.get(pos);
-                if (this.lastMap.get(pos) != null)
-                    str.append(pos + this.lastMap.get(pos).toString() );
-                else
-                    str.append("d");
             }
             str.append("\n");
         }

@@ -21,23 +21,29 @@ public class FullscreenActivity extends AppCompatActivity implements View.OnTouc
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        matrix = findViewById(R.id.matrix);
-        //gameLayer.setOnTouchListener(this);
+        setContentView(R.layout.activity_fullscreen);
 
         g = new Game(getBaseContext());
 
-        GH = new GraphicsHandler(getBaseContext(), this.g, matrix);
-
-        MatrixAdapter MA = new MatrixAdapter(getBaseContext(), this.lastMap, this.n, this.m, this.game);
-        this.gridView.setAdapter(MA);
-        System.out.println(GH.toString());
-
-        GH.updateGridView();
     }
 
     @Override
-    public boolean onTouch(View v, MotionEvent event) {
+    protected void onStart()
+    {
+        super.onStart();
+
+        matrix = findViewById(R.id.matrix);
+        if(matrix == null)
+            System.out.println("GridView not found");
+
+        matrix.setOnTouchListener(this);
+        GH = new GraphicsHandler(getBaseContext(), this.g, matrix);
+        redraw();
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event)
+    {
         int width = v.getWidth();
         int height = v.getHeight();
         float x = event.getX();
@@ -56,6 +62,15 @@ public class FullscreenActivity extends AppCompatActivity implements View.OnTouc
             }
         }
 
+        this.redraw();
         return true;
+    }
+
+    private void redraw()
+    {
+
+        System.out.println(GH.toString());
+        if(!GH.updateGridView())
+            System.out.println("Failed to update gridView");
     }
 }

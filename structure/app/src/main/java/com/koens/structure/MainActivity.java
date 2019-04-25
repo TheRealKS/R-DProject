@@ -21,13 +21,14 @@ import java.util.NoSuchElementException;
 /**
  * Game activity
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
 
     Game g;
     GraphicsHandler GH;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -35,19 +36,40 @@ public class MainActivity extends AppCompatActivity {
 
 
         GridView matrix = (GridView) findViewById(R.id.matrix);
-        matrix.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return event.getAction() == MotionEvent.ACTION_MOVE;
-            }
-        });
+
         GH = new GraphicsHandler(this, this.g, matrix);
         GH.updateGridView();
+        matrix.setOnTouchListener(this);
 
-        setupButtons();
+//        setupButtons();
 
     }
 
+
+    @Override
+    public boolean onTouch (View v, MotionEvent event)
+    {
+        int width = v.getWidth();
+        int height = v.getHeight();
+        float x = event.getX();
+        float y = event.getY();
+        float dxdy = (float) height / width;
+
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            if(y <= x * dxdy && y <= height - x * dxdy) {
+                g.movePlayer(Direction.NORTH);
+            } else if(y > x*dxdy && y <= height - x*dxdy) {
+                g.movePlayer(Direction.WEST);
+            } else if(y <= x*dxdy && y > height - x*dxdy) {
+                g.movePlayer(Direction.EAST);
+            } else if (y > x*dxdy && y > height - x*dxdy) {
+                g.movePlayer(Direction.SOUTH);
+            }
+        }
+
+        redraw();
+        return true;
+    }
 
     /**
      * E_BUTTON (Enumeration of buttons) contains the
